@@ -21,7 +21,7 @@ def add():
     
         name = request.form.get("name").strip()
         matric_number = request.form.get("matric_number").strip().lower()
-        department = request.form.get("department").stip()
+        department = request.form.get("department").strip()
         level = request.form.get("level")
 
         # Check if matric number already exists
