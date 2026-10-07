@@ -1,0 +1,43 @@
+{% extends "layout.html" %} {% block body %}
+
+<h1>Search Student</h1>
+
+<form action="/search" method="post">
+  <label>Matric Number</label>
+
+  <input type="text" name="matric_number" required />
+
+  <button type="submit">Search</button>
+</form>
+
+{% if student %}
+
+<h2>Student Found</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <td>{{ student.name|upper }}</td>
+  </tr>
+
+  <tr>
+    <th>Matric Number</th>
+    <td>{{ student.matric_number|upper }}</td>
+  </tr>
+
+  <tr>
+    <th>Department</th>
+    <td>{{ student.department|upper }}</td>
+  </tr>
+
+  <tr>
+    <th>Level</th>
+    <td>{{ student.level }}</td>
+  </tr>
+</table>
+
+{% elif request.method == "POST" %}
+
+<p>No student was found with that matric number.</p>
+
+{% endif %} {% endblock %}
