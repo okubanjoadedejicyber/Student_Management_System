@@ -23,23 +23,23 @@
   <label>Level</label>
 
   <select name="level" required>
-    <option value="100" {% if student.level="" ="100" %}selected{% endif %}>
+    <option value="100" {% if student.level == 100 %}selected{% endif %}>
       100
     </option>
 
-    <option value="200" {% if student.level="" ="200" %}selected{% endif %}>
+    <option value="200" {% if student.level == 200 %}selected{% endif %}>
       200
     </option>
 
-    <option value="300" {% if student.level="" ="300" %}selected{% endif %}>
+    <option value="300" {% if student.level == 300 %}selected{% endif %}>
       300
     </option>
 
-    <option value="400" {% if student.level="" ="400" %}selected{% endif %}>
+    <option value="400" {% if student.level == 400 %}selected{% endif %}>
       400
     </option>
 
-    <option value="500" {% if student.level="" ="500" %}selected{% endif %}>
+    <option value="500" {% if student.level == 500 %}selected{% endif %}>
       500
     </option>
   </select>

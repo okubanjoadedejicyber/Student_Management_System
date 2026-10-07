@@ -19,9 +19,9 @@ def add():
 
     if request.method == "POST":
     
-        name = request.form.get("name").lower()
+        name = request.form.get("name").strip()
         matric_number = request.form.get("matric_number").strip().lower()
-        department = request.form.get("department").lower()
+        department = request.form.get("department").stip()
         level = request.form.get("level")
 
         # Check if matric number already exists
@@ -72,8 +72,8 @@ def update(id):
 
     if request.method == "POST":
 
-        name = request.form.get("name").lower()
-        department = request.form.get("department").lower()
+        name = request.form.get("name").strip()
+        department = request.form.get("department").strip()
         level = request.form.get("level")
 
         db.execute( """ UPDATE students SET name = ?, department = ?, level = ? WHERE id = ? """, name, department, level, id )
