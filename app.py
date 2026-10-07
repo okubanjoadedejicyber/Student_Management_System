@@ -1,10 +1,14 @@
 from cs50 import SQL
+
+import os
+
 from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
 # Connect to SQLite database
-db = SQL("sqlite:///students.db")
+db = SQL(os.environ.get("STUDENTDB_URL"))
+# db = SQL("sqlite:///students.db")
 
 
 @app.route("/")
