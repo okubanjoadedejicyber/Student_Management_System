@@ -7,21 +7,13 @@ body {
  box-sizing: border-box; 
 }
 
-nav {
+a{
   background: #222;
   color: white;
-  padding: 20px;
-}
-
-nav h2 {
-  display: inline;
-  margin-right: 30px;
-}
-
-nav a {
-  color: white;
+  border: none;
   text-decoration: none;
-  margin-right: 15px;
+  cursor: pointer;
+  padding: 13px 15px;
 }
 
 main {
@@ -58,8 +50,7 @@ select {
   box-sizing: border-box;
 }
 
-button,
-.button {
+button {
   background: #222;
   color: white;
   border: none;
