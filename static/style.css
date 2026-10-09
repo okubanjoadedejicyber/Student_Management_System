@@ -80,5 +80,6 @@ button,
 }
 
 .main_actions {
- display: flex;
+  display: flex;
+  gap: 12px;
 }

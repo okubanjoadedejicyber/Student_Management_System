@@ -1,3 +1,4 @@
 Flask
 cs50
-psycopg
+SQLAlchemy
+psycopg[binary]
