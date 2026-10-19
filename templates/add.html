@@ -1,40 +1,39 @@
-{% extends "layout.html" %} {% block body %}
+{% extends "layout.html" %}
+{% block title %}Add Student{% endblock %}
+{% block body %}
+<section class="form-card">
+  <h1>Add Student</h1>
 
-<h1>Add Student</h1>
+  <form method="post" action="{{ url_for('add') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-{% if error %}
+    <label for="first_name">First Name</label>
+    <input id="first_name" name="first_name" required>
 
-<p class="error">{{ error }}</p>
+    <label for="middle_name">Middle Name (Optional)</label>
+    <input id="middle_name" name="middle_name">
 
-{% endif %}
+    <label for="surname">Surname</label>
+    <input id="surname" name="surname" required>
 
-<form action="/add" method="post">
-  <label>Name</label>
+    <label for="matric_number">Matric Number</label>
+    <input id="matric_number" name="matric_number" required>
 
-  <input type="text" name="name" required />
+    <label for="department">Department</label>
+    <input id="department" name="department" required>
 
-  <label>Matric Number</label>
+    <label for="level">Level</label>
+    <select id="level" name="level" required>
+      <option value="">Choose level</option>
+      <option value="100">100</option>
+      <option value="200">200</option>
+      <option value="300">300</option>
+      <option value="400">400</option>
+      <option value="500">500</option>
+    </select>
 
-  <input type="text" name="matric_number" required />
-
-  <label>Department</label>
-
-  <input type="text" name="department" required />
-
-  <label>Level</label>
-
-  <select name="level" required>
-    <option value="">Select level</option>
-    <option value="100">100</option>
-    <option value="200">200</option>
-    <option value="300">300</option>
-    <option value="400">400</option>
-    <option value="500">500</option>
-  </select>
-
-  <button type="submit">Add Student</button>
-  <a href="/" class="button">Home</a>
-
-</form>
-
+    <button class="button" type="submit">Save Student</button>
+    <a class="button secondary" href="{{ url_for('staff_dashboard') }}">Cancel</a>
+  </form>
+</section>
 {% endblock %}

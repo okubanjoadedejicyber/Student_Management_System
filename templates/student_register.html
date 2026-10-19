@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Student Registration{% endblock %}
+{% block body %}
+<section class="form-card">
+    <h1>Student Registration</h1>
+    <p>Enter the surname and matric number on your existing record.</p>
+
+    <form method="post" action="{{ url_for('student_register') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <label for="surname">Surname</label>
+        <input id="surname" name="surname" autocomplete="family-name" required>
+
+        <label for="matric_number">Matric Number</label>
+        <input id="matric_number" name="matric_number" autocomplete="off" required>
+
+        <label for="password">Create Password</label>
+        <input id="password" name="password" type="password" minlength="12" autocomplete="new-password" required>
+
+        <label for="confirm_password">Confirm Password</label>
+        <input id="confirm_password" name="confirm_password" type="password" minlength="12" autocomplete="new-password"
+            required>
+
+        <button type="submit" class="button">Register</button>
+    </form>
+
+    <p>Already registered? <a href="{{ url_for('student_login') }}">Log in</a></p>
+    <a href="{{ url_for('landing') }}">Back to Home</a>
+</section>
+{% endblock %}

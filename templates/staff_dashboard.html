@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}Staff Dashboard{% endblock %}
+{% block body %}
+<h1>Staff Dashboard</h1>
+<p>Welcome, {{ session.get("username") }}.</p>
+
+<div class="toolbar">
+  <a class="button" href="{{ url_for('add') }}">Add Student</a>
+  <a class="button secondary" href="{{ url_for('search') }}">Search Student</a>
+</div>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Surname</th>
+        <th>Matric Number</th>
+        <th>Department</th>
+        <th>Level</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+      <tr>
+        <td>{{ student.first_name | upper }}</td>
+        <td>{{ student.middle_name | upper if student.middle_name else "—" }}</td>
+        <td>{{ student.surname | upper }}</td>
+        <td>{{ student.matric_number | upper }}</td>
+        <td>{{ student.department | upper }}</td>
+        <td>{{ student.level }}</td>
+        <td class="actions">
+          <a class="button small" href="{{ url_for('update', id=student.id) }}">Update</a>
+
+          <form action="{{ url_for('delete', id=student.id) }}" method="post"
+            onsubmit="return confirm('Delete this student record?');">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="button danger small">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="7">No student records found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

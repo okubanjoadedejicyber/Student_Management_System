@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}My Student Profile{% endblock %}
+{% block body %}
+<section class="profile-card">
+    <h1>My Student Profile</h1>
+    <p><strong>First Name:</strong> {{ student.first_name | upper }}</p>
+    <p><strong>Middle Name:</strong> {{ student.middle_name | upper if student.middle_name else "—" }}</p>
+    <p><strong>Surname:</strong> {{ student.surname | upper }}</p>
+    <p><strong>Matric Number:</strong> {{ student.matric_number | upper }}</p>
+    <p><strong>Department:</strong> {{ student.department | upper }}</p>
+    <p><strong>Level:</strong> {{ student.level }}</p>
+</section>
+{% endblock %}

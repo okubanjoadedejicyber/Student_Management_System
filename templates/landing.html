@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Home | Student Management System{% endblock %}
+{% block body %}
+<section class="hero">
+    <p class="eyebrow">STUDENT SERVICES</p>
+    <h1>Welcome to the Student Management System</h1>
+    <p>Manage student records or access your personal student information.</p>
+
+    <div class="login-options">
+        <div class="panel">
+            <h2>Staff Portal</h2>
+            <p>Register and manage student records.</p>
+            <a class="button" href="{{ url_for('staff_login') }}">Staff Login</a>
+        </div>
+
+        <div class="panel">
+            <h2>Student Portal</h2>
+            <p>Register your account or access your profile.</p>
+            <a class="button" href="{{ url_for('student_login') }}">Student Login</a>
+            <a class="button secondary" href="{{ url_for('student_register') }}">Student Registration</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

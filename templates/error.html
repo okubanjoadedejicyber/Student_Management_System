@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}Error {{ code }}{% endblock %}
+{% block body %}
+<section class="form-card">
+    <h1>Error {{ code }}</h1>
+    <p>{{ message }}</p>
+    <a class="button" href="{{ url_for('landing') }}">Back to Home</a>
+</section>
+{% endblock %}

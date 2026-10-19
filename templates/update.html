@@ -1,53 +1,40 @@
-{% extends "layout.html" %} {% block body %}
+{% extends "layout.html" %}
+{% block title %}Update Student{% endblock %}
+{% block body %}
+<section class="form-card">
+  <h1>Update Student</h1>
 
-<h1>Update Student</h1>
+  <form method="post" action="{{ url_for('update', id=student.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-<form action="/update/{{ student.id }}" method="post">
-  <label>Name</label>
+    <label for="first_name">First Name</label>
+    <input id="first_name" name="first_name" value="{{ student.first_name }}" required>
 
-  <input type="text" name="name" value="{{ student.name }}" required />
+    <label for="middle_name">Middle Name (Optional)</label>
+    <input id="middle_name" name="middle_name" value="{{ student.middle_name or '' }}">
 
-  <label>Matric Number</label>
+    <label for="surname">Surname</label>
+    <input id="surname" name="surname" value="{{ student.surname }}" required>
 
-  <input type="text" value="{{ student.matric_number }}" disabled />
+    <label for="matric_number">Matric Number</label>
+    <input id="matric_number" value="{{ student.matric_number }}" disabled>
 
-  <label>Department</label>
+    <p class="hint">Matric number cannot be changed on this form.</p>
 
-  <input
-    type="text"
-    name="department"
-    value="{{ student.department }}"
-    required
-  />
+    <label for="department">Department</label>
+    <input id="department" name="department" value="{{ student.department }}" required>
 
-  <label>Level</label>
+    <label for="level">Level</label>
+    <select id="level" name="level" required>
+      {% for level in [100, 200, 300, 400, 500] %}
+      <option value="{{ level }}" {% if student.level==level %}selected{% endif %}>
+        {{ level }} Level
+      </option>
+      {% endfor %}
+    </select>
 
-  <select name="level" required>
-    <option value="100" {% if student.level == 100 %}selected{% endif %}>
-      100
-    </option>
-
-    <option value="200" {% if student.level == 200 %}selected{% endif %}>
-      200
-    </option>
-
-    <option value="300" {% if student.level == 300 %}selected{% endif %}>
-      300
-    </option>
-
-    <option value="400" {% if student.level == 400 %}selected{% endif %}>
-      400
-    </option>
-
-    <option value="500" {% if student.level == 500 %}selected{% endif %}>
-      500
-    </option>
-  </select>
-
-  <button type="submit">Save Changes</button>
-  <a href="/" class="button">Home</a>
-
-
-</form>
-
+    <button type="submit" class="button">Save Changes</button>
+    <a class="button secondary" href="{{ url_for('staff_dashboard') }}">Cancel</a>
+  </form>
+</section>
 {% endblock %}
